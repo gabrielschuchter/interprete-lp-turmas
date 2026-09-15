@@ -125,20 +125,13 @@ function renderCurriculum(targetId, modules, offset = 0) {
       const number = String(index + 1 + offset).padStart(2, "0");
       const topics = module.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join("");
       return `
-        <details class="module" ${index === 0 ? "open" : ""}>
-          <summary>
-            <span class="module-index">${number}</span>
-            <span>
-              <span class="module-summary__month">${escapeHtml(module.month)}</span>
-              <span class="module-summary__title">${escapeHtml(module.title)}</span>
-            </span>
-            <span class="module-toggle" aria-hidden="true">+</span>
-          </summary>
-          <div class="module-details">
-            <p>${escapeHtml(module.summary)}</p>
-            <ul class="module-tags">${topics}</ul>
-          </div>
-        </details>
+        <article class="syllabus-item">
+          <span class="syllabus-index">${number} / 09</span>
+          <span class="syllabus-month">${escapeHtml(module.month)}</span>
+          <h3>${escapeHtml(module.title)}</h3>
+          <p>${escapeHtml(module.summary)}</p>
+          <ul class="syllabus-topics">${topics}</ul>
+        </article>
       `;
     })
     .join("");

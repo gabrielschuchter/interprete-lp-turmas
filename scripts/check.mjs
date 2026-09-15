@@ -3,7 +3,17 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const requiredFiles = ["index.html", "styles.css", "script.js", "public/brand/wordmark-amaranto.svg"];
+const requiredFiles = [
+  "index.html",
+  "styles.css",
+  "script.js",
+  "public/brand/wordmark-amaranto.svg",
+  "public/assets/interprete/caderno-origem.png",
+  "public/assets/interprete/documento-pergunta.png",
+  "public/assets/interprete/leitura-em-camadas.png",
+  "public/assets/interprete/mapa-decisao.png",
+  "public/assets/interprete/comunidade.png"
+];
 const requiredMarkers = [
   ["index.html", "<main id=\"conteudo\">"],
   ["index.html", "9 meses"],
