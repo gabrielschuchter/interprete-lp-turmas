@@ -1,0 +1,12 @@
+{
+  "name": "interprete-lp-turmas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing page das turmas do Interprete.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/server.mjs --port 4173",
+    "start": "node scripts/server.mjs --port 4173",
+    "check": "node scripts/check.mjs"
+  }
+}
