@@ -892,11 +892,6 @@ h1 em, h2 em, h3 em { color: var(--amaranth); font-style: italic; }
   .problem-fold .fold-footer { display: none; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
-}
-
 @media (max-width: 1180px) {
   :root { --shell-width: min(1080px, calc(100% - 8vw)); }
   .method-intro > p { width: 100%; }
@@ -1412,17 +1407,3 @@ h1 em, h2 em, h3 em { color: var(--amaranth); font-style: italic; }
 .method-step:focus .step-label strong, .method-step:hover .step-label strong { color: var(--amaranth); }
 .method-step:focus .method-step img, .method-step:hover .method-step img { transform: scale(1.012); }
 .method-step:focus-visible, .practice-step:focus-visible, .module-row:focus-visible { outline: 1px solid var(--debian); outline-offset: 6px; }
-
-@media (prefers-reduced-motion: reduce) {
-  .problem-copy .argument-band::before { transform: scaleX(1); }
-  .js .practice-content .practice-step, .js .syllabus-columns .syllabus-track--nutrition, .js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row, .js .results-side .results-stage img, .js .results-side .results-bust { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
-  .js .reveal:not(.is-visible), .js .hero-copy > *, .js .feature, .js .results-checklist li, .js .scenario, .js .teacher-card, .js .module-row, .js .method-board:not(.is-visible) .method-step { opacity: 1; transform: none; }
-  .js .hero-copy.is-visible > *, .js .hero-collage.is-visible img { animation: none; }
-  .method-board::before { transform: scaleY(1); }
-  .mobile-sticky-cta { transition: none; }
-}

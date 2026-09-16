@@ -31,7 +31,6 @@ const requiredMarkers = [
   ["index.html", "id=\"autoridade\""],
   ["index.html", "id=\"entrada\""],
   ["index.html", "id=\"faq\""],
-  ["styles.css", "prefers-reduced-motion"],
   ["script.js", "const product ="],
   ["script.js", "nextCohort: \"A definir\""],
   ["script.js", "investment: \"A definir\""]

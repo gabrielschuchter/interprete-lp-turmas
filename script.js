@@ -170,10 +170,6 @@ function setupReveal() {
   const items = document.querySelectorAll(".reveal");
   items.forEach((item, index) => item.style.setProperty("--reveal-index", index));
   document.querySelectorAll(".hero-fold .reveal").forEach((item) => item.classList.add("is-visible"));
-  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-    items.forEach((item) => item.classList.add("is-visible"));
-    return;
-  }
   if (!("IntersectionObserver" in window)) {
     items.forEach((item) => item.classList.add("is-visible"));
     return;
@@ -236,7 +232,6 @@ function setupReviewScroller() {
 
   dots.innerHTML = cards.map((_, index) => `<button type="button" aria-label="Ir para o depoimento ${index + 1}" aria-pressed="${index === 0}"></button>`).join("");
   const dotButtons = [...dots.querySelectorAll("button")];
-  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
   const setActive = (index) => {
     dotButtons.forEach((button, buttonIndex) => {
@@ -262,7 +257,7 @@ function setupReviewScroller() {
     frame = requestAnimationFrame(updateFromScroll);
   }, { passive: true });
   dotButtons.forEach((button, index) => button.addEventListener("click", () => {
-    scroller.scrollTo({ left: cards[index].offsetLeft, behavior: reducedMotion ? "auto" : "smooth" });
+    scroller.scrollTo({ left: cards[index].offsetLeft, behavior: "smooth" });
     setActive(index);
   }));
   window.addEventListener("resize", updateFromScroll, { passive: true });
@@ -272,8 +267,7 @@ function setupReviewScroller() {
 function setupHeroParallax() {
   const collage = document.querySelector(".hero-collage");
   const finePointer = window.matchMedia?.("(hover: hover) and (pointer: fine)");
-  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
-  if (!collage || window.innerWidth < 1024 || !finePointer?.matches || reducedMotion?.matches) return;
+  if (!collage || window.innerWidth < 1024 || !finePointer?.matches) return;
 
   let frame = 0;
   let x = 0;
