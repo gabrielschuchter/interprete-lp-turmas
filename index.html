@@ -3,50 +3,327 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#F1EBE8" />
-    <meta name="description" content="Turmas do Interprete: nove meses para aprender a buscar, interpretar e aplicar evidência em problemas reais de Nutrição." />
+    <meta name="theme-color" content="#F4EFEB" />
+    <meta name="description" content="Turmas do Interprete: uma formação de nove meses para buscar, ler, interpretar e aplicar evidências na prática de Nutrição." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:title" content="Turmas do Interprete. | Prática Baseada em Evidências" />
-    <meta property="og:description" content="Uma formação em turma para construir raciocínio clínico: seis meses de PBE e três meses de aplicação em Nutrição." />
+    <meta property="og:description" content="Uma formação em turma para construir um raciocínio baseado em evidências e aplicá-lo a desafios reais da Nutrição." />
     <title>Turmas do Interprete. | Prática Baseada em Evidências</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
     <script>document.documentElement.classList.add("js");</script>
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5l7 7-7 7" /></symbol>
+      <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1" /><path d="M7 3v4M17 3v4M3 10h18" /></symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" /><path d="M2.5 20c.5-3.5 2.7-5.5 6.5-5.5s6 2 6.5 5.5M16 5.5a3 3 0 0 1 0 5.8M17 14.5c2.8.2 4.3 2 4.6 4.8" /></symbol>
+      <symbol id="icon-video" viewBox="0 0 24 24"><rect x="3" y="5" width="13" height="14" rx="1" /><path d="m16 10 5-3v10l-5-3z" /></symbol>
+      <symbol id="icon-book" viewBox="0 0 24 24"><path d="M3 5.5A3.5 3.5 0 0 1 6.5 2H12v18H6.5A3.5 3.5 0 0 0 3 23zM21 5.5A3.5 3.5 0 0 0 17.5 2H12v18h5.5A3.5 3.5 0 0 1 21 23z" /></symbol>
+      <symbol id="icon-document" viewBox="0 0 24 24"><path d="M5 2.5h10l4 4V21.5H5z" /><path d="M15 2.5v4h4M8 11h8M8 15h8M8 19h5" /></symbol>
+      <symbol id="icon-chat" viewBox="0 0 24 24"><path d="M3 12a7.5 7.5 0 0 1 7.5-7.5h3A7.5 7.5 0 0 1 21 12a7.5 7.5 0 0 1-7.5 7.5H9L4 22v-4.8A7.4 7.4 0 0 1 3 12Z" /><path d="M18 9.5a5.5 5.5 0 0 1 3 5" /></symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 20V12h4v8M10 20V7h4v13M16 20V3h4v17M3 20h18" /></symbol>
+      <symbol id="icon-person" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4" /><path d="M4 22c.4-5 3-7.5 8-7.5s7.6 2.5 8 7.5" /></symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3.5 2" /></symbol>
+      <symbol id="icon-card" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="1.5" /><path d="M2.5 9h19M6 15h4" /></symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="1.5" /><path d="M7 10V7a5 5 0 0 1 10 0v3" /></symbol>
+      <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 2.5 20 5v6.5c0 5-3.3 8.5-8 10-4.7-1.5-8-5-8-10V5z" /><path d="m8 12 2.5 2.5L16 9" /></symbol>
+      <symbol id="icon-graduation" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5zM6 11.5V17c3.5 2.5 8.5 2.5 12 0v-5.5M22 9v6" /></symbol>
+      <symbol id="icon-question" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M9.5 9a2.6 2.6 0 1 1 4.8 1.4c-.8 1-2.3 1.3-2.3 3.1M12 17.5h.01" /></symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="m8 12 2.5 2.5L16 9" /></symbol>
+      <symbol id="icon-infinity" viewBox="0 0 24 24"><path d="M7.5 15.5C4.5 15.5 3 14 3 12s1.5-3.5 4.5-3.5c2.2 0 3.6 1.8 4.5 3.5 1-1.7 2.3-3.5 4.5-3.5 3 0 4.5 1.5 4.5 3.5s-1.5 3.5-4.5 3.5c-2.2 0-3.6-1.8-4.5-3.5-1 1.7-2.3 3.5-4.5 3.5Z" /></symbol>
+      <symbol id="icon-sprout" viewBox="0 0 24 24"><path d="M12 21V11" /><path d="M12 14c-4.6 0-7-2.1-7-6.5C9.5 7.5 12 9.8 12 14Z" /><path d="M12 11c0-4.2 2.4-6.5 7-6.5C19 8.9 16.6 11 12 11Z" /></symbol>
+      <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.2 2.4 3.2 5.4 3.2 9s-1 6.6-3.2 9c-2.2-2.4-3.2-5.4-3.2-9S9.8 5.4 12 3Z" /></symbol>
+    </svg>
+
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header class="site-header">
-      <div class="shell header-inner">
-        <a class="brand-link" href="#topo" aria-label="Interprete. — início"><img src="public/brand/wordmark-amaranto.svg" alt="Interprete." width="176" height="32" /></a>
-        <nav class="site-nav" id="site-nav" aria-label="Navegação principal"><a href="#raciocinio">O raciocínio</a><a href="#turma">A turma</a><a href="#percurso">O percurso</a><a href="#faq">Perguntas</a></nav>
-        <a class="button button--small header-cta" href="#entrada" data-cta>Próxima turma</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu"><span></span><span></span></button>
+
+    <header class="masthead" id="topo">
+      <div class="shell masthead-inner">
+        <a class="brand-link" href="#topo" aria-label="Interprete. — início">
+          <img src="public/brand/wordmark-amaranto.svg" alt="Interprete." width="160" height="30" />
+        </a>
+        <p class="masthead-tagline">Não aceite a evidência.<br />Interprete.</p>
+        <p class="masthead-note">TURMAS 2026</p>
       </div>
     </header>
+
     <main id="conteudo">
-      <section class="hero" id="topo" aria-labelledby="hero-title">
-        <div class="shell hero-layout">
-          <div class="hero-copy reveal"><p class="eyebrow">FORMAÇÃO EM TURMA · 09 MESES</p><h1 id="hero-title">A decisão clínica começa antes da conclusão.</h1><p class="hero-lede">Nove meses para aprender a buscar, interpretar e aplicar evidência — primeiro em Prática Baseada em Evidências, depois em problemas reais de Nutrição.</p><a class="button" href="#entrada" data-cta>Quero entrar na próxima turma</a><p class="hero-note">Encontros ao vivo · leitura prévia · discussão · prática guiada</p></div>
-          <div class="hero-collage reveal reveal--late" aria-label="Composição de materiais do Interprete"><figure class="hero-poster hero-poster--origin"><img src="public/assets/interprete/caderno-origem.png" alt="Material do Interprete com um busto e uma pergunta sobre evidência" fetchpriority="high" /></figure><figure class="hero-poster hero-poster--layers"><img src="public/assets/interprete/leitura-em-camadas.png" alt="Material do Interprete mostrando uma leitura em camadas" /></figure><div class="hero-note-card"><span>LEITURA CRÍTICA</span><strong>O que este resultado autoriza dizer?</strong><i>↗</i></div><p class="hand-note hand-note--hero">não pule<br />o caminho</p></div>
+      <section class="fold hero-fold" aria-labelledby="hero-title">
+        <div class="shell hero-grid">
+          <div class="hero-copy reveal">
+            <p class="section-kicker">TURMAS DO INTERPRETE</p>
+            <h1 id="hero-title">Aprenda a tomar<br />decisões em Nutrição<br /><em>com base em evidências.</em></h1>
+            <p class="hero-lede">Uma formação de 9 meses para aprender a buscar, interpretar e aplicar evidências científicas na prática — com uma base completa em Prática Baseada em Evidências e três meses dedicados à Nutrição.</p>
+            <div class="hero-facts" aria-label="Formato da formação">
+              <span>6 meses de PBE</span><span>3 meses de Nutrição</span><span>encontros ao vivo</span><span>prática guiada</span>
+            </div>
+            <a class="button" href="#entrada" data-cta>
+              <span data-cta-text>Quero entrar na próxima turma</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+            </a>
+            <div class="hero-availability">
+              <div class="availability-item"><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg><p><small>Próxima turma</small><strong data-next-cohort>A definir</strong></p></div>
+              <div class="availability-item"><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><p><small>Vagas</small><strong data-spots>A definir</strong></p></div>
+            </div>
+          </div>
+          <figure class="hero-collage reveal reveal--late">
+            <img src="public/assets/approved/assets/dobra-01-hero-problema-v1/hero_visual_busto_artigo.png" alt="Composição editorial com busto clássico, artigo científico marcado, anotações e livros do Interprete." width="604" height="640" fetchpriority="high" />
+          </figure>
         </div>
-        <div class="shell fact-strip reveal"><div><strong data-duration>9 meses</strong><span>de formação</span></div><div><strong>ao vivo</strong><span>encontros e discussão</span></div><div><strong>em turma</strong><span>aprendizado coletivo</span></div><div><strong>PBE → Nutrição</strong><span>um mesmo raciocínio</span></div></div>
       </section>
-      <section class="section problem" id="problema" aria-labelledby="problem-title"><div class="shell problem-layout"><div class="reading reveal"><p class="eyebrow">O PONTO DE PARTIDA</p><h2 id="problem-title">Encontrar o artigo não encerra o trabalho.</h2><p class="section-lede">Artigos, aulas, posts, diretrizes e opiniões chegam prontos. O que nem sempre aparece é o raciocínio que liga uma evidência a uma decisão possível para alguém real.</p></div><figure class="paper-fragment reveal reveal--late"><img src="public/assets/interprete/documento-pergunta.png" alt="Documento do Interprete sobre a pergunta que uma conclusão permite responder" loading="lazy" /><figcaption><span>MARCAÇÃO DE LEITURA</span>“isso responde à pergunta?”</figcaption></figure></div></section>
-      <section class="section method" id="raciocinio" aria-labelledby="method-title"><div class="shell method-layout"><div class="method-copy reveal"><p class="eyebrow">O QUE O INTERPRETE ENSINA</p><h2 id="method-title">Não a resposta pronta. O caminho até ela.</h2><p class="section-lede">O método começa na pergunta e termina no contexto. Em cada passo, você aprende a separar dado, interpretação, limitação e decisão possível.</p><a class="text-link" href="#percurso">Ver o percurso de 9 meses <span>→</span></a></div><div class="reasoning-board reveal reveal--late"><div class="board-document"><span class="board-kicker">PERGUNTA CLÍNICA</span><p>Em qual população, para qual desfecho e com que comparação?</p><div class="board-lines"></div></div><div class="board-data"><span>RR 0,82</span><span>IC95% 0,70–0,96</span><small>o número não é a decisão</small></div><figure class="board-map"><img src="public/assets/interprete/mapa-decisao.png" alt="Mapa oficial do Interprete para decidir com contexto e aplicabilidade" loading="lazy" /></figure><span class="board-arrow board-arrow--one">↓</span><span class="board-arrow board-arrow--two">↓</span><p class="hand-note hand-note--board">revisar<br />a inferência</p><div class="board-decision"><span>DECISÃO</span><strong>evidência + contexto + pessoa</strong></div></div></div></section>
-      <section class="section cohort" id="turma" aria-labelledby="cohort-title"><div class="shell cohort-layout"><div class="cohort-copy reveal"><p class="eyebrow eyebrow--light">COMO A TURMA ACONTECE</p><h2 id="cohort-title">A leitura começa só. O raciocínio não precisa terminar assim.</h2><p class="section-lede">O estudo individual prepara a conversa. O encontro ao vivo põe a interpretação em teste. Depois, prática e feedback ajudam a levar o método de volta para o trabalho.</p></div><figure class="community-print reveal reveal--late"><img src="public/assets/interprete/comunidade.png" alt="Material oficial do Interprete com uma conversa da comunidade" loading="lazy" /><figcaption><span>COMUNIDADE</span>uma pergunta pode abrir o raciocínio do grupo inteiro.</figcaption></figure><ol class="cohort-rhythm reveal"><li><span>01 / ANTES</span><strong>Leitura com propósito</strong><p>Materiais e perguntas orientam o que vale observar.</p></li><li><span>02 / AO VIVO</span><strong>Discussão e acompanhamento</strong><p>O grupo compara interpretações, expõe dúvidas e testa critérios.</p></li><li><span>03 / DEPOIS</span><strong>Prática guiada</strong><p>Exercícios e feedback tornam o caminho utilizável na rotina.</p></li></ol></div></section>
-      <section class="section curriculum-section" id="percurso" aria-labelledby="curriculum-title"><div class="shell curriculum-intro reading reveal"><p class="eyebrow">O PERCURSO</p><h2 id="curriculum-title">Primeiro, você constrói o método. Depois, leva o método à Nutrição.</h2><p class="section-lede">Uma formação longa, organizada como um caderno de trabalho: cada mês acrescenta uma ferramenta ao raciocínio que será aplicado nos três meses finais.</p></div><div class="shell curriculum-atlas reveal"><div class="atlas-head"><span>MESES 1–6</span><strong>Prática Baseada em Evidências</strong><i>o método se constrói</i></div><div class="atlas-track" id="curriculum-base"></div><div class="atlas-break"><span>RUPTURA DE CAMPO</span><strong>o mesmo raciocínio encontra problemas reais de Nutrição</strong></div><div class="atlas-head atlas-head--nutrition"><span>MESES 7–9</span><strong>Nutrição aplicada</strong><i>o método se testa</i></div><div class="atlas-track atlas-track--nutrition" id="curriculum-nutrition"></div><figure class="atlas-source"><img src="public/assets/interprete/leitura-em-camadas.png" alt="Material didático do Interprete com leitura de um artigo científico" loading="lazy" /><figcaption>matéria-prima: artigo, pergunta, anotação e discussão.</figcaption></figure></div><div class="shell curriculum-action reveal"><a class="button" href="#entrada" data-cta>Ver a entrada na turma</a><p>O cronograma detalhado da próxima edição fica centralizado no código e pode ser atualizado sem redesenhar esta página.</p></div></section>
-      <section class="section case-study" id="caso" aria-labelledby="case-title"><div class="shell case-layout"><div class="reading reveal"><p class="eyebrow">UM EXEMPLO DO MÉTODO</p><h2 id="case-title">“Posso aplicar este resultado?” ainda não é uma decisão.</h2><p class="section-lede">O caso é didático. A formação ensina a abrir uma recomendação e examinar o que ela realmente permite dizer.</p></div><article class="case-document reveal reveal--late" aria-label="Exemplo visual de uma ficha de interpretação"><header><span>FICHA DE LEITURA · EXEMPLO DIDÁTICO</span><span>04 / 06</span></header><div class="case-question"><span>PERGUNTA</span><p>Uma estratégia de composição corporal funciona para esta pessoa, neste contexto e para o desfecho que importa?</p></div><div class="case-evidence"><div><span>RESULTADO</span><strong>diferença média<br />−3,1</strong></div><div><span>PRECISÃO</span><strong>IC95%<br />−4,8 a −1,4</strong></div><div><span>LIMITAÇÃO</span><strong>desfecho<br />substituto</strong></div></div><div class="case-annotation"><span>?</span><p>Isso é clinicamente relevante para a pessoa à minha frente?</p></div><footer><span>APLICABILIDADE</span><strong>benefícios · danos · preferências · viabilidade</strong><em>→ decisão revisável</em></footer></article></div></section>
-      <section class="section capacity" id="capacidades" aria-labelledby="capabilities-title"><div class="shell capacity-layout"><div class="reading reveal"><p class="eyebrow">AO FINAL DO PERCURSO</p><h2 id="capabilities-title">Capacidades que aparecem no trabalho.</h2></div><ul class="capacity-list reveal reveal--late"><li>formular uma pergunta mais precisa;</li><li>localizar a evidência que responde ao problema;</li><li>interpretar resultados, precisão e incerteza;</li><li>reconhecer limitações relevantes;</li><li>avaliar aplicabilidade no contexto real;</li><li>explicar quando a evidência ainda não permite concluir.</li></ul></div></section>
-      <section class="section conductor" id="conduz" aria-labelledby="conductor-title"><div class="shell conductor-layout"><div class="reading reveal"><p class="eyebrow eyebrow--light">QUEM CONDUZ</p><h2 id="conductor-title">O papel de quem conduz é deixar o raciocínio examinável.</h2><p class="section-lede">A formação é do Interprete. A condução organiza a discussão, oferece feedback e mantém a pergunta mais importante que a autoridade de uma conclusão.</p></div><div class="conductor-statement reveal reveal--late"><span>I.</span><p>Rigor sem autoridade absoluta.</p><small>Os nomes e credenciais oficiais de cada edição entram aqui junto com a abertura da turma.</small></div></div></section>
-      <section class="section included" id="inclui" aria-labelledby="included-title"><div class="shell included-layout"><div class="reading reveal"><p class="eyebrow">O QUE ESTÁ INCLUÍDO</p><h2 id="included-title">Uma formação pensada para continuar entre um encontro e outro.</h2></div><ul id="included-list" class="included-list reveal reveal--late"></ul></div></section>
-      <section class="section entry" id="entrada" aria-labelledby="entry-title"><div class="shell entry-layout"><div class="reveal"><p class="eyebrow eyebrow--light">ENTRADA NA PRÓXIMA TURMA</p><h2 id="entry-title">O próximo passo é entrar na conversa.</h2><p>Uma turma para formar o próprio raciocínio — com método, discussão e prática em Nutrição.</p></div><aside class="entry-card reveal reveal--late"><div><span>DURAÇÃO</span><strong data-duration>9 meses</strong></div><div><span>INÍCIO</span><strong class="placeholder" data-next-cohort>[a definir]</strong></div><div><span>INVESTIMENTO</span><strong class="placeholder" data-investment>[a definir]</strong></div><div><span>VAGAS</span><strong class="placeholder" data-spots>[a definir]</strong></div><a class="button button--light" href="#entrada" data-cta>Quero entrar na próxima turma</a><small>Datas, investimento e vagas serão definidos para a próxima edição.</small></aside></div></section>
-      <section class="section faq" id="faq" aria-labelledby="faq-title"><div class="shell faq-layout"><div class="reading reveal"><p class="eyebrow">PERGUNTAS FREQUENTES</p><h2 id="faq-title">O que precisa estar claro antes de entrar.</h2><p class="section-lede">Quando uma informação operacional ainda depende da próxima edição, ela aparece como tal.</p></div><div id="faq-list" class="faq-list reveal reveal--late"></div></div></section>
-      <section class="closing"><div class="shell closing-inner reveal"><p class="eyebrow eyebrow--light">INTERPRETE.</p><h2>Não aceite a evidência. Interprete.</h2><p>A formação não entrega um veredito no lugar do seu. Ela ensina a construir, explicar e revisar o caminho até uma decisão.</p><a class="button button--light" href="#entrada" data-cta>Quero entrar na próxima turma</a></div></section>
+
+      <section class="fold problem-fold" id="problema" aria-labelledby="problem-title">
+        <div class="shell problem-grid">
+          <div class="problem-stage reveal" aria-label="Mesa de estudo com artigos e perguntas">
+            <img class="problem-desk" src="public/assets/approved/assets/dobra-01-hero-problema-v1/problema_mesa_estudo.png" alt="Mesa de estudo com artigos científicos e um caderno de análise." width="610" height="645" loading="lazy" />
+            <img class="problem-pubmed" src="public/assets/approved/assets/dobra-01-hero-problema-v1/problema_pubmed_mock.png" alt="Busca no PubMed por evidências sobre proteína e perda de peso." width="405" height="300" loading="lazy" />
+            <img class="problem-postit" src="public/assets/approved/assets/dobra-01-hero-problema-v1/problema_postit_perguntas.png" alt="Post-it com perguntas sobre confiabilidade, aplicação e impacto real." width="185" height="335" loading="lazy" />
+          </div>
+          <div class="problem-copy reveal reveal--late">
+            <div class="section-index"><span>01</span><i></i><span>O PROBLEMA</span></div>
+            <h2 id="problem-title">Você já tem acesso a mais <em>informação</em> do que consegue usar.</h2>
+            <p>Artigos, diretrizes, aulas, podcasts, posts, congressos.</p>
+            <p>O problema aparece quando você precisa decidir o que merece confiança e o que realmente muda uma conduta.</p>
+            <p>Um estudo encontra benefício. Outro encontra pouco efeito. Uma diretriz recomenda. Um professor discorda. O resultado é estatisticamente significativo, mas ninguém explica se a diferença importa de verdade.</p>
+            <div class="argument-band"><span></span><p>E aí chega a parte que interessa para a prática:<strong>como um profissional baseado em evidências decide?</strong></p></div>
+            <p>É isso que você aprende no <strong>Interprete.</strong></p>
+            <a class="text-link" href="#como-funciona">Ver como funciona <span>↓</span></a>
+          </div>
+        </div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>01 / 10</span></div>
+      </section>
+
+      <section class="fold method-fold" id="metodo" aria-labelledby="method-title">
+        <div class="shell method-grid">
+          <div class="method-intro reveal">
+            <div class="section-index"><span>02</span><i></i><span>O MÉTODO</span></div>
+            <h2 id="method-title">Um processo que acompanha <em>qualquer pergunta clínica.</em></h2>
+            <p>Mais do que respostas prontas, você aprende um método para transformar dúvidas reais em decisões baseadas em evidências.</p>
+            <p>Da construção da pergunta à aplicação na prática, o mesmo processo se repete — independentemente do tema. Hoje pode ser creatina. Amanhã, obesidade. Depois, suplementação, saúde da mulher ou uma intervenção que ainda nem entrou nas diretrizes.</p>
+            <div class="quote-band"><span></span><p>A pergunta muda.<br /><em>Seu critério fica.</em></p></div>
+            <a class="text-link" href="#ementa"><span class="text-link-mark" aria-hidden="true"></span><span>Conheça a ementa</span></a>
+            <img class="method-books" src="public/assets/approved/assets/dobra-03-metodo/metodo_livros.png" alt="Livros sobre prática baseada em evidências em Nutrição." width="380" height="244" loading="lazy" />
+          </div>
+          <div class="method-board reveal reveal--late">
+            <article class="method-step method-step--1"><div class="step-label"><b>1</b><strong>PERGUNTAR</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_pergunta_postit.png" alt="Post-it com uma pergunta clínica sobre creatina e gordura corporal." width="225" height="300" loading="lazy" /></article>
+            <article class="method-step method-step--2"><div class="step-label"><b>2</b><strong>BUSCAR</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_pubmed.png" alt="Tela de busca do PubMed com filtros de evidência." width="340" height="265" loading="lazy" /></article>
+            <article class="method-step method-step--3"><div class="step-label"><b>3</b><strong>LER</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_artigo.png" alt="Trecho de artigo científico com resultado destacado." width="325" height="310" loading="lazy" /></article>
+            <article class="method-step method-step--4"><div class="step-label"><b>4</b><strong>INTERPRETAR</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_forest_plot.png" alt="Forest plot para interpretação de efeito e intervalo de confiança." width="300" height="255" loading="lazy" /></article>
+            <article class="method-step method-step--5"><div class="step-label"><b>5</b><strong>AVALIAR<br />APLICABILIDADE</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_aplicabilidade_postit.png" alt="Post-it com perguntas sobre população, desfecho, riscos e aplicabilidade." width="250" height="250" loading="lazy" /></article>
+            <article class="method-step method-step--6"><div class="step-label"><b>6</b><strong>DECIDIR</strong></div><img src="public/assets/approved/assets/dobra-03-metodo/metodo_decisao_card.png" alt="Cartão de decisão com uma marca de verificação e reflexão clínica." width="235" height="250" loading="lazy" /></article>
+            <img class="method-bust" src="public/assets/approved/assets/dobra-03-metodo/metodo_busto.png" alt="Busto clássico em composição editorial do método." width="406" height="294" loading="lazy" />
+          </div>
+        </div>
+        <div class="method-footer shell"><span>DO ARTIGO AO PACIENTE.<br />SEMPRE COM O MESMO MÉTODO.</span><span class="hand-note">melhores decisões,<br />mais contexto real.</span></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>02 / 10</span></div>
+      </section>
+
+      <section class="fold how-fold" id="como-funciona" aria-labelledby="how-title">
+        <div class="shell how-grid">
+          <div class="how-copy reveal">
+            <div class="section-index"><span>03</span><i></i><span>COMO FUNCIONA</span></div>
+            <h2 id="how-title">Uma formação longa,<em><span>com método e acompanhamento</span>real.</em></h2>
+            <p>O Interprete é uma formação em turma, com encontros ao vivo, leitura orientada, discussão de artigos, aplicação prática e feedback ao longo de todo o percurso.</p>
+            <p>Você não estuda sozinho. Você aprende a pensar melhor, junto com outras pessoas que levam a evidência a sério.</p>
+            <div class="feature-grid" aria-label="Elementos da formação">
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-video"></use></svg><h3>Encontros ao vivo</h3><p>Discussão de artigos, casos e aplicação na prática.</p></article>
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><h3>Turmas pequenas</h3><p>Mais participação, mais feedback, mais aprendizado.</p></article>
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg><h3>Trilha estruturada</h3><p>Materiais e leituras orientadas a cada etapa.</p></article>
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-chat"></use></svg><h3>Comunidade ativa</h3><p>Troca entre alunos e professores durante toda a formação.</p></article>
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-chart"></use></svg><h3>Prática guiada</h3><p>Casos reais e exercícios de interpretação.</p></article>
+              <article class="feature"><svg class="icon" aria-hidden="true"><use href="#icon-person"></use></svg><h3>Acompanhamento</h3><p>Feedback para ajudar você a evoluir de forma consistente.</p></article>
+            </div>
+            <div class="argument-band argument-band--wide"><span></span><p>O objetivo não é que você assista a mais aulas.<br /><strong>É que você se torne um profissional mais preparado para lidar com evidências no seu dia a dia.</strong></p></div>
+          </div>
+          <figure class="how-scene reveal reveal--late"><img src="public/assets/approved/assets/dobra-04-como-funciona/como_funciona_cena_completa-clinical.png" alt="Cena editorial com laptop, livros, caneca, caderno e materiais do Interprete." width="776" height="900" loading="lazy" /></figure>
+        </div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>03 / 10</span></div>
+      </section>
+
+      <section class="fold syllabus-fold" id="ementa" aria-labelledby="syllabus-title">
+        <div class="shell syllabus-grid">
+          <aside class="syllabus-intro reveal">
+            <div class="section-index"><span>04</span><i></i><span>A EMENTA</span></div>
+            <h2 id="syllabus-title">Uma formação <em>em sequência.</em></h2>
+            <p>Nove meses para construir um raciocínio baseado em evidências e aplicá-lo a desafios reais da Nutrição.</p>
+            <p>Cada etapa foi pensada para que você desenvolva, de forma progressiva, as competências que realmente fazem diferença na prática.</p>
+            <div class="syllabus-divider"></div>
+            <p class="syllabus-kicker">AO FINAL</p>
+            <h3>Você não apenas entende a evidência.<br />Você <em>sabe o que fazer</em> com ela.</h3>
+            <img class="syllabus-bust" src="public/assets/approved/assets/dobra-05-ementa/ementa_busto.png" alt="Busto clássico em uma composição editorial da ementa." width="340" height="284" loading="lazy" />
+          </aside>
+          <div class="syllabus-columns reveal reveal--late">
+            <section class="syllabus-track syllabus-track--base" aria-labelledby="base-title">
+              <div class="track-heading"><span class="track-pill">meses 1–6</span><h3 id="base-title">Prática Baseada em <em>Evidências</em></h3><p>DA LÓGICA À APLICAÇÃO</p></div>
+              <div id="curriculum-base" class="module-list"></div>
+            </section>
+            <section class="syllabus-track syllabus-track--nutrition" aria-labelledby="nutrition-title">
+              <div class="track-heading"><span class="track-pill">meses 7–9</span><h3 id="nutrition-title">Nutrição Aplicada</h3><p>DO MÉTODO À PRÁTICA</p></div>
+              <p class="nutrition-intro">Nos três meses finais, o método é colocado em prática em temas centrais da Nutrição, com discussão de estudos, diretrizes e controvérsias da área.</p>
+              <div id="curriculum-nutrition" class="module-list"></div>
+            </section>
+          </div>
+        </div>
+        <div class="shell syllabus-cta argument-band"><span></span><p>Duas etapas. Um mesmo objetivo:<strong>uma prática em Nutrição realmente baseada em evidências.</strong></p><a class="button" href="#entrada" data-cta><span data-cta-text>Quero ver todos os detalhes da ementa</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>04 / 10</span></div>
+      </section>
+
+      <section class="fold practice-fold" id="pratica" aria-labelledby="practice-title">
+        <div class="shell practice-grid">
+          <aside class="practice-intro reveal">
+            <div class="section-index"><span>05</span><i></i><span>NA PRÁTICA</span></div>
+            <h2 id="practice-title">Do artigo<br />à decisão clínica.<br /><em>Na prática.</em></h2>
+            <p>Você vai aplicar o método em estudos reais, com temas relevantes da Nutrição, e construir o raciocínio passo a passo — da pergunta à conduta.</p>
+            <p>Aqui, a teoria ganha contexto. Você lê, interpreta, discute, defende suas conclusões e aprende com diferentes perspectivas.</p>
+            <div class="practice-rule"></div>
+            <img class="practice-bust" src="public/assets/approved/assets/dobra-06-pratica/pratica_busto_citacao.png" alt="Busto clássico com citação editorial sobre conhecimento e dúvida." width="445" height="365" loading="lazy" />
+          </aside>
+          <div class="practice-content reveal reveal--late">
+            <figure class="practice-scene"><img src="public/assets/approved/assets/dobra-06-pratica/pratica_cena_estudo.png" alt="Pessoa estudando um artigo no laptop ao lado de livros de Nutrição baseada em evidências." width="845" height="370" loading="lazy" /><img class="practice-forest" src="public/assets/approved/assets/dobra-06-pratica/pratica_forest_overlay.png" alt="Overlay editorial com um gráfico de evidência." width="296" height="350" loading="lazy" /></figure>
+            <p class="practice-kicker">COMO FUNCIONA NA PRÁTICA</p>
+            <div id="practice-steps" class="practice-steps"></div>
+          </div>
+        </div>
+        <div class="shell practice-cta argument-band"><span></span><p>Interpretar evidência é uma habilidade.<br /><strong>E, como toda habilidade, ela se desenvolve com prática.</strong></p><a class="button" href="#entrada" data-cta><span data-cta-text>Quero fazer parte da próxima turma</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>05 / 10</span></div>
+      </section>
+
+      <section class="fold results-fold" id="resultados" aria-labelledby="results-title">
+        <div class="shell results-grid">
+          <div class="results-copy reveal">
+            <div class="section-index"><span>06</span><i></i><span>O QUE VOCÊ LEVA</span></div>
+            <h2 id="results-title">No final da formação,<br /><em>você pensa diferente<br />sobre a evidência.</em></h2>
+            <p>Mais do que conteúdo, você desenvolve competências que mudam a forma como você lida com a informação científica na sua rotina profissional.</p>
+            <ul id="results-checklist" class="results-checklist"></ul>
+          </div>
+          <div class="results-side reveal reveal--late">
+            <div class="results-stage"><img class="results-books" src="public/assets/approved/assets/dobra-07-resultados/resultados_livros_caneca.png" alt="Livros de avaliação crítica, um caderno e uma caneca do Interprete." width="576" height="620" loading="lazy" /><img class="results-citation" src="public/assets/approved/assets/dobra-07-resultados/resultados_citacao_card.png" alt="Citação editorial sobre educação, ceticismo e cuidado com o que acreditamos." width="360" height="485" loading="lazy" /><img class="results-note" src="public/assets/approved/assets/dobra-07-resultados/resultados_caderno.png" alt="Caderno com anotação sobre método e novos contextos." width="300" height="200" loading="lazy" /><img class="results-bust" src="public/assets/approved/assets/dobra-07-resultados/resultados_busto.png" alt="Busto clássico em uma composição editorial." width="206" height="405" loading="lazy" /></div>
+            <p class="results-kicker">EM DIFERENTES CENÁRIOS</p>
+            <div class="scenario-grid">
+              <article class="scenario"><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg><h3>Na prática clínica</h3><p>Decisões mais seguras, transparentes e alinhadas com as melhores evidências disponíveis.</p></article>
+              <article class="scenario"><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><h3>Na discussão profissional</h3><p>Mais confiança para discutir casos, diretrizes e condutas com outros profissionais.</p></article>
+              <article class="scenario"><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg><h3>Na sua evolução contínua</h3><p>Ferramentas para continuar aprendendo de forma autônoma, mesmo depois da formação.</p></article>
+            </div>
+          </div>
+        </div>
+        <div class="shell results-cta argument-band"><span></span><p><small>O REAL OBJETIVO</small><strong>Construir uma prática realmente<br />baseada em evidências.</strong></p><p>Estudos novos vão continuar aparecendo.<br />Com o método certo, você sabe como avaliar,<br />o que considerar e quando aplicar.</p><a class="button" href="#entrada" data-cta><span data-cta-text>Quero entrar na próxima turma</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>06 / 10</span></div>
+      </section>
+
+      <section class="fold authority-fold" id="autoridade" aria-labelledby="authority-title">
+        <div class="shell authority-top">
+          <div class="authority-intro reveal">
+            <div class="section-index"><span>07</span><i></i><span>QUEM CONDUZ</span></div>
+            <h2 id="authority-title">Aprenda com quem vive a evidência<br /><em>na prática.</em></h2>
+            <p>A formação é conduzida por profissionais que trabalham com pesquisa, leitura crítica e aplicação de evidências em saúde, e que acreditam no ensino próximo da realidade.</p>
+            <div class="authority-rule"></div>
+          </div>
+          <div class="teachers-area reveal reveal--late">
+            <div id="teachers-grid" class="teachers-grid"></div>
+            <img class="authority-bust" src="public/assets/approved/assets/dobra-08-autoridade-prova/autoridade_busto.png" alt="Busto clássico ao lado da composição dos professores." width="286" height="420" loading="lazy" />
+          </div>
+        </div>
+        <div class="shell proof-grid">
+          <div class="proof-intro reveal">
+            <div class="section-index"><span>08</span><i></i><span>O QUE OS ALUNOS DIZEM</span></div>
+            <h2>Histórias reais<br />de quem já viveu<br />essa <em>experiência.</em></h2>
+            <p>Profissionais de diferentes regiões e áreas da Nutrição, unidos pelo mesmo objetivo: tomar decisões mais baseadas em evidências.</p>
+            <img class="proof-books" src="public/assets/approved/assets/dobra-08-autoridade-prova/prova_livros.png" alt="Livros de nutrição e jornal científico em uma composição editorial." width="330" height="294" loading="lazy" />
+          </div>
+          <div id="reviews-grid" class="reviews-grid reveal reveal--late"></div>
+        </div>
+        <div class="shell authority-cta argument-band"><span></span><p><small>FAÇA PARTE</small><strong>Profissionais mais preparados<br />constroem uma Nutrição melhor.</strong></p><a class="button" href="#entrada" data-cta><span data-cta-text>Quero entrar na próxima turma</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>07 / 10</span></div>
+      </section>
+
+      <section class="fold offer-fold" id="entrada" aria-labelledby="offer-title">
+        <div class="shell offer-grid">
+          <aside class="offer-summary reveal">
+            <div class="section-index"><span>09</span><i></i><span>SUA PRÓXIMA TURMA</span></div>
+            <h2 id="offer-title">Entre para a próxima turma do <em>Interprete.</em></h2>
+            <p>Nove meses para construir uma prática mais segura, crítica e realmente baseada em evidências.</p>
+            <div class="offer-feature-list">
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg><h3>6 meses de Prática Baseada em Evidências</h3><p>Da lógica à aplicação.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg><h3>3 meses de Nutrição Aplicada</h3><p>Temas reais da prática.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-video"></use></svg><h3>Encontros ao vivo</h3><p>Discussão, casos e aplicação na prática.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><h3>Turma reduzida</h3><p>Mais participação e feedback.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-document"></use></svg><h3>Materiais e leituras orientadas</h3><p>A cada etapa.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-chat"></use></svg><h3>Comunidade ativa</h3><p>Troca entre alunos e professores.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-chart"></use></svg><h3>Prática guiada</h3><p>Exercícios e casos reais.</p></article>
+              <article><svg class="icon" aria-hidden="true"><use href="#icon-person"></use></svg><h3>Acompanhamento</h3><p>Feedback para a sua evolução.</p></article>
+            </div>
+            <div class="offer-rule"></div>
+            <span class="hand-note offer-note">mesmo método,<br />novos horizontes.</span>
+          </aside>
+          <article class="offer-card reveal reveal--late">
+            <p class="offer-kicker">PRÓXIMA TURMA</p>
+            <h3>Início em <span data-next-cohort>A definir</span>.</h3>
+            <p class="offer-status">VAGAS A DEFINIR.</p>
+            <div class="offer-divider"></div>
+            <div class="offer-facts-grid">
+              <div><svg class="icon" aria-hidden="true"><use href="#icon-calendar"></use></svg><p><strong>Início</strong><span data-next-cohort>A definir</span></p></div>
+              <div><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg><p><strong>Horário dos encontros</strong><span data-meeting>A definir</span></p></div>
+              <div><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><p><strong>Vagas</strong><span data-spots>A definir</span></p></div>
+              <div><svg class="icon" aria-hidden="true"><use href="#icon-card"></use></svg><p><strong>Investimento</strong><span class="offer-price" data-investment>A definir</span><span data-installments>A definir</span></p></div>
+            </div>
+            <a class="button button--wide" href="#entrada" data-cta><span data-cta-text>Quero garantir minha vaga</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            <div class="offer-trust"><span><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Ambiente seguro<br />de pagamento</span><span><svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg>Seus dados<br />protegidos</span><span><svg class="icon" aria-hidden="true"><use href="#icon-card"></use></svg>Condições da edição<br />a definir</span></div>
+            <p class="offer-disclosure"><strong>Informações da próxima edição</strong><br />Datas, investimento, condições, vagas e horários serão atualizados aqui antes da abertura das inscrições.</p>
+          </article>
+          <figure class="offer-editorial reveal reveal--late"><img src="public/assets/approved/assets/dobra-09-oferta/oferta_busto_painel.png" alt="Painel editorial com busto clássico e a frase melhores decisões hoje, uma prática mais relevante amanhã." width="346" height="755" loading="lazy" /></figure>
+        </div>
+        <div class="shell invite-band"><span></span><div><p class="section-kicker">UM CONVITE</p><h3>Faça parte de uma turma que leva a evidência a sério.</h3></div><blockquote>“O futuro da nossa área depende de profissionais que saibam interpretar, e não apenas repetir, a evidência.”<cite>— Gabriel Schuchter Pereira</cite></blockquote></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>09 / 10</span></div>
+      </section>
+
+      <section class="fold faq-fold" id="faq" aria-labelledby="faq-title">
+        <div class="shell faq-grid">
+          <aside class="faq-intro reveal">
+            <div class="section-index"><span>10</span><i></i><span>PERGUNTAS FREQUENTES</span></div>
+            <h2 id="faq-title">Dúvidas <em>frequentes.</em></h2>
+            <p>Aqui você encontra as respostas para as principais perguntas sobre a formação. Se ainda ficar com alguma dúvida, é só falar com a gente.</p>
+            <div class="faq-rule"></div>
+            <img class="faq-bust" src="public/assets/approved/assets/dobra-10-faq/faq_busto_citacao.png" alt="Busto clássico ao lado de uma citação editorial sobre formular dúvidas." width="390" height="515" loading="lazy" />
+            <img class="faq-books" src="public/assets/approved/assets/dobra-10-faq/faq_livros.png" alt="Livros sobre evidência e pensamento crítico." width="176" height="250" loading="lazy" />
+          </aside>
+          <div id="faq-list" class="faq-list reveal reveal--late"></div>
+        </div>
+        <div class="shell faq-cta argument-band"><span></span><p><small>PRÓXIMO PASSO</small><strong>Menos dúvidas.<br />Mais evidências na sua prática.</strong></p><a class="button" href="#entrada" data-cta><span data-cta-text>Quero garantir minha vaga</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a></div>
+        <div class="fold-footer shell"><span>Interprete. <small>Não aceite a evidência. Interprete.</small></span><span><i></i>10 / 10</span></div>
+      </section>
+
+      <section class="fold closing-fold" id="fechamento" aria-labelledby="closing-title">
+        <div class="shell closing-grid">
+          <div class="closing-copy reveal">
+            <div class="section-index"><span>10</span><i></i><span>COMECE AGORA</span></div>
+            <h2 id="closing-title">Mais do que um curso,<br /><em>um novo jeito de pensar<br />a Nutrição.</em></h2>
+            <p>Junte-se a profissionais que escolhem decisões melhores, com base em evidências, e que acreditam em uma prática mais crítica, humana e atual.</p>
+            <div class="closing-benefits">
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-chart"></use></svg><b>Evidências<br />na prática</b></span><span><svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg><b>Discussão<br />com especialistas</b></span><span><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg><b>Aplicação<br />em casos reais</b></span><span><svg class="icon" aria-hidden="true"><use href="#icon-infinity"></use></svg><b>Aprendizado<br />contínuo</b></span>
+            </div>
+            <a class="button button--wide" href="#entrada" data-cta><span data-cta-text>Quero fazer parte da próxima turma</span><svg class="icon icon--arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+            <p class="closing-meta">Vagas e início a definir.</p>
+          </div>
+          <div class="closing-visual reveal reveal--late"><img src="public/assets/approved/assets/dobra-11-fechamento/fechamento_laptop_completo.png" alt="Laptop do Interprete sobre livros, com uma página de evidência para decisões reais." width="816" height="480" loading="lazy" /></div>
+        </div>
+        <figure class="closing-quote reveal reveal--late"><img src="public/assets/approved/assets/dobra-11-fechamento/fechamento_citacao_barra.png" alt="Citação editorial sobre prática baseada em evidências, assinada por Gabriel Schuchter Pereira." width="773" height="173" loading="lazy" /></figure>
+        <div class="shell closing-principles"><span><svg class="icon" aria-hidden="true"><use href="#icon-sprout"></use></svg>Uma Nutrição<br />mais crítica.</span><span><svg class="icon" aria-hidden="true"><use href="#icon-person"></use></svg>Uma prática<br />mais humana.</span><span><svg class="icon" aria-hidden="true"><use href="#icon-book"></use></svg>Um futuro<br />mais consciente.</span><span><svg class="icon" aria-hidden="true"><use href="#icon-globe"></use></svg>Profissionais que<br />fazem a diferença.</span></div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="shell footer-inner"><img src="public/brand/wordmark-amaranto.svg" alt="Interprete." width="142" height="26" /><p>Escola de prática baseada em evidências.<br />Turmas do Interprete. · 2026</p></div></footer>
+
+    <footer class="site-footer" id="rodape">
+      <div class="shell footer-grid">
+        <div><img class="footer-logo" src="public/brand/wordmark-amaranto.svg" alt="Interprete." width="185" height="34" /><p class="footer-motto">EVIDÊNCIA<br />PARA UMA NUTRIÇÃO<br />MAIS CONSCIENTE.</p></div>
+        <nav aria-label="Links do rodapé"><a href="#topo">Início</a><a href="#metodo">Sobre</a><a href="#ementa">Formação</a><a href="#faq">FAQ</a><a href="#faq">Privacidade</a><a href="#entrada">Contato</a></nav>
+        <div class="footer-contact"><p>RECEBA CONTEÚDOS RELEVANTES</p><div class="footer-input"><span>Seu e-mail</span><span aria-hidden="true">→</span></div><p class="footer-social" aria-label="Redes sociais"><span aria-label="Instagram">◎</span><span aria-label="YouTube">▶</span><span aria-label="LinkedIn">in</span></p></div>
+      </div>
+      <div class="shell footer-bottom"><span>© 2026 Interprete. Todos os direitos reservados.</span><span>Feito com propósito. <i></i></span></div>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
