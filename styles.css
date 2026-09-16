@@ -179,7 +179,7 @@ h1 em, h2 em, h3 em { color: var(--amaranth); font-style: italic; }
 
 .button:hover, .button:focus-visible { background: var(--crimson); border-color: var(--crimson); transform: translateY(-2px); }
 
-.button:focus-visible, .text-link:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px solid var(--debian); outline-offset: 4px; }
+.button:focus-visible, .text-link:focus-visible, a:focus-visible { outline: 2px solid var(--debian); outline-offset: 4px; }
 
 .button--wide { width: 100%; }
 
@@ -738,19 +738,11 @@ h1 em, h2 em, h3 em { color: var(--amaranth); font-style: italic; }
 
 .faq-card { height: 100%; min-height: 0; padding: 20px 24px 19px; border: 1px solid rgba(75, 53, 46, 0.08); border-radius: 8px; background: rgba(255, 252, 249, 0.56); }
 
-.faq-card summary { display: block; cursor: pointer; list-style: none; }
-
-.faq-card summary::-webkit-details-marker { display: none; }
-
 .faq-card .faq-symbol { display: inline-grid; width: 50px; height: 50px; place-items: center; border: 1px solid rgba(148, 21, 47, 0.15); border-radius: 50%; background: rgba(242, 225, 226, 0.42); }
 
 .faq-card .faq-symbol .icon { width: 25px; height: 25px; }
 
-.faq-card summary > span:nth-child(2) { display: block; margin-top: 10px; padding-top: 0; color: var(--amaranth); font-family: var(--display); font-size: 23px; line-height: 1.01; }
-
 .faq-toggle { display: none; padding-top: 2px; color: var(--amaranth); font-family: var(--sans); font-size: 21px; line-height: 1; }
-
-.faq-card[open] .faq-toggle { transform: rotate(45deg); }
 
 .faq-answer { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.38; }
 
@@ -1183,4 +1175,254 @@ h1 em, h2 em, h3 em { color: var(--amaranth); font-style: italic; }
 @media (min-width: 1181px) {
   .track-pill { margin-bottom: 0; padding: 10px 42px; }
   .syllabus-track--nutrition .track-pill { padding-inline: 35px; }
+}
+
+/* Motion and interaction layer: keeps the approved composition intact. */
+:root {
+  --motion-fast: 160ms;
+  --motion-base: 260ms;
+  --motion-medium: 380ms;
+  --motion-slow: 520ms;
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-ui: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button {
+  transition: background-color var(--motion-base) var(--ease-ui), border-color var(--motion-base) var(--ease-ui), transform var(--motion-base) var(--ease-editorial), box-shadow var(--motion-base) var(--ease-ui);
+}
+
+.button .icon--arrow { transition: transform var(--motion-base) var(--ease-editorial); }
+
+.button:hover, .button:focus-visible { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(140, 21, 53, 0.12); }
+.button:hover .icon--arrow, .button:focus-visible .icon--arrow { transform: translateX(4px); }
+.button:active { transform: translateY(0) scale(0.995); box-shadow: none; }
+.button:focus-visible, .faq-trigger:focus-visible, .review-dots button:focus-visible { outline: 2px solid var(--debian); outline-offset: 4px; }
+
+.reveal { opacity: 1; transform: none; transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.reveal--late { transition-delay: 90ms; }
+.js .reveal:not(.is-visible) { opacity: 0; transform: translate3d(0, 12px, 0); }
+.js .reveal--late:not(.is-visible) { transform: translate3d(8px, 12px, 0); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@keyframes editorial-rise {
+  from { opacity: 0; transform: translate3d(0, 10px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes editorial-image-in {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes editorial-step-in {
+  from { opacity: 0; transform: translate(var(--step-x), calc(var(--step-y) + 10px)); }
+  to { opacity: 1; transform: translate(var(--step-x), var(--step-y)); }
+}
+
+.js .hero-copy > * { opacity: 0; transform: translate3d(0, 10px, 0); }
+.js .hero-copy.is-visible > * { animation: editorial-rise var(--motion-medium) var(--ease-editorial) both; }
+.js .hero-copy.is-visible > :nth-child(1) { animation-delay: 0ms; }
+.js .hero-copy.is-visible > :nth-child(2) { animation-delay: 70ms; }
+.js .hero-copy.is-visible > :nth-child(3) { animation-delay: 140ms; }
+.js .hero-copy.is-visible > :nth-child(4) { animation-delay: 210ms; }
+.js .hero-copy.is-visible > :nth-child(5) { animation-delay: 280ms; }
+.js .hero-copy.is-visible > :nth-child(6) { animation-delay: 350ms; }
+.js .hero-collage.is-visible img { animation: editorial-image-in var(--motion-slow) var(--ease-editorial) 120ms both; transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0) scale(1); }
+.hero-collage img { will-change: transform; }
+
+.js .problem-stage img, .js .how-scene img, .js .practice-forest { transition: opacity var(--motion-medium) var(--ease-editorial); }
+.js .problem-stage:not(.is-visible) img, .js .how-scene:not(.is-visible) img { opacity: 0; }
+.js .problem-stage.is-visible img:nth-child(2) { transition-delay: 90ms; }
+.js .problem-stage.is-visible img:nth-child(3) { transition-delay: 180ms; }
+
+.method-step { --step-x: 0px; --step-y: 0px; transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.js .method-board:not(.is-visible) .method-step { opacity: 0; transform: translate(var(--step-x), calc(var(--step-y) + 10px)); }
+.js .method-board.is-visible .method-step { animation: editorial-step-in var(--motion-medium) var(--ease-editorial) both; animation-delay: calc((var(--step-index, 1) - 1) * 80ms); }
+
+@media (min-width: 1181px) {
+  .method-step--1 { --step-x: -10px; --step-y: 27px; }
+  .method-step--2 { --step-x: -29px; --step-y: 60px; }
+  .method-step--3 { --step-x: 0px; --step-y: 27px; }
+  .method-step--4 { --step-x: -10px; --step-y: 14px; }
+  .method-step--5 { --step-x: 55px; --step-y: 26px; }
+  .method-step--6 { --step-x: 38px; --step-y: 16px; }
+}
+
+.method-step--1 { --step-index: 1; }
+.method-step--2 { --step-index: 2; }
+.method-step--3 { --step-index: 3; }
+.method-step--4 { --step-index: 4; }
+.method-step--5 { --step-index: 5; }
+.method-step--6 { --step-index: 6; }
+
+.js .feature, .js .results-checklist li, .js .scenario, .js .teacher-card, .js .module-row { opacity: 0; transform: translate3d(0, 10px, 0); transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.js .how-copy.is-visible .feature, .js .results-copy.is-visible .results-checklist li, .js .results-side.is-visible .scenario, .js .teachers-area.is-visible .teacher-card, .js .syllabus-columns.is-visible .module-row { opacity: 1; transform: none; }
+.js .how-copy.is-visible .feature:nth-child(2), .js .results-copy.is-visible .results-checklist li:nth-child(2), .js .results-side.is-visible .scenario:nth-child(2), .js .teachers-area.is-visible .teacher-card:nth-child(2), .js .syllabus-columns.is-visible .module-row:nth-child(2) { transition-delay: 70ms; }
+.js .how-copy.is-visible .feature:nth-child(3), .js .results-copy.is-visible .results-checklist li:nth-child(3), .js .results-side.is-visible .scenario:nth-child(3), .js .teachers-area.is-visible .teacher-card:nth-child(3), .js .syllabus-columns.is-visible .module-row:nth-child(3) { transition-delay: 140ms; }
+.js .how-copy.is-visible .feature:nth-child(4), .js .results-copy.is-visible .results-checklist li:nth-child(4), .js .syllabus-columns.is-visible .module-row:nth-child(4) { transition-delay: 210ms; }
+.js .how-copy.is-visible .feature:nth-child(5), .js .results-copy.is-visible .results-checklist li:nth-child(5), .js .syllabus-columns.is-visible .module-row:nth-child(5) { transition-delay: 280ms; }
+.js .how-copy.is-visible .feature:nth-child(6), .js .results-copy.is-visible .results-checklist li:nth-child(6), .js .syllabus-columns.is-visible .module-row:nth-child(6) { transition-delay: 350ms; }
+.js .results-copy.is-visible .results-checklist li:nth-child(7) { transition-delay: 420ms; }
+.js .results-copy.is-visible .results-checklist li:nth-child(8) { transition-delay: 490ms; }
+
+.results-checklist .icon { transition: transform var(--motion-base) var(--ease-editorial); }
+.results-checklist li:hover .icon { transform: scale(1.04); }
+.feature .icon, .scenario .icon, .offer-feature-list .icon, .closing-principles .icon { transition: transform var(--motion-base) var(--ease-editorial); }
+.feature:hover .icon, .scenario:hover .icon, .offer-feature-list article:hover .icon, .closing-principles span:hover .icon { transform: translateY(-2px); }
+.teacher-card img { transition: transform var(--motion-medium) var(--ease-editorial), filter var(--motion-medium) var(--ease-ui); }
+.teacher-card:hover img { transform: translateY(-2px); filter: saturate(1.04); }
+.review-card { transition: transform var(--motion-base) var(--ease-editorial), box-shadow var(--motion-base) var(--ease-ui); }
+.review-card:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(59, 39, 34, 0.1); }
+.practice-step { transition: border-color var(--motion-base) var(--ease-ui); }
+.practice-step:hover { border-color: rgba(140, 21, 53, 0.45); }
+.practice-step > img { transition: transform var(--motion-base) var(--ease-editorial); }
+.practice-step:hover > img { transform: translateY(-2px); }
+.module-row { transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial), background-color var(--motion-base) var(--ease-ui); }
+.module-row:hover { background: rgba(255, 252, 249, 0.34); }
+
+.faq-card h3 { margin: 0; }
+.faq-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; appearance: none; background: transparent; color: inherit; cursor: pointer; text-align: left; }
+.faq-question { display: block; margin-top: 10px; color: var(--amaranth); font-family: var(--display); font-size: 23px; line-height: 1.01; }
+.faq-answer { display: grid; grid-template-rows: 1fr; margin-top: 10px; opacity: 1; transition: grid-template-rows 240ms var(--ease-editorial), margin-top 240ms var(--ease-editorial), opacity 180ms var(--ease-ui); }
+.faq-answer-inner { min-height: 0; overflow: hidden; }
+.faq-card:not(.is-open) .faq-answer { grid-template-rows: 0fr; margin-top: 0; opacity: 0; }
+
+@media (hover: none) {
+  .results-checklist li:hover .icon, .feature:hover .icon, .scenario:hover .icon, .offer-feature-list article:hover .icon, .closing-principles span:hover .icon, .teacher-card:hover img, .review-card:hover, .practice-step:hover > img, .module-row:hover .module-art { transform: none; }
+  .teacher-card:hover img { filter: none; }
+  .practice-step:hover { border-color: var(--line); }
+  .module-row:hover { background: transparent; }
+  .review-card:hover { box-shadow: var(--soft-shadow); }
+  .module-row:hover .module-number { background: transparent; }
+  .module-row:hover .module-copy h4, .practice-step:hover .practice-step-head h3, .method-step:hover .step-label strong { color: inherit; }
+  .method-step:hover .method-step img { transform: none; }
+}
+
+/* The mobile sequence keeps the same assets, order and editorial line. */
+@media (max-width: 767px) {
+  .method-board { min-height: 0; padding: 0 0 250px; gap: 31px; grid-template-columns: 1fr; }
+  .method-board::before { position: absolute; top: 22px; bottom: 206px; left: 18px; width: 1px; content: ""; background: linear-gradient(var(--amaranth), rgba(140, 21, 53, 0.12)); transform: scaleY(0); transform-origin: top; transition: transform var(--motion-slow) var(--ease-editorial); }
+  .method-board.is-visible::before { transform: scaleY(1); }
+  .method-step, .method-step--3 { grid-column: auto; display: block; max-width: none; padding-left: 45px; transform: none !important; }
+  .method-step .step-label { min-height: 37px; margin-left: -45px; }
+  .method-step img, .method-step--1 img, .method-step--2 img, .method-step--3 img, .method-step--4 img, .method-step--5 img, .method-step--6 img { width: min(100%, 300px); height: auto; max-height: none; margin: 13px 0 0; }
+  .method-step--3 img { max-height: 260px; }
+  .method-bust { bottom: 18px; right: -30px; width: 275px; }
+
+  .practice-steps { grid-template-columns: 1fr; gap: 0; }
+  .practice-step, .practice-step:first-child, .practice-step:nth-child(odd) { display: block; padding: 18px 0; border: 0; border-top: 1px solid var(--line); }
+  .practice-step:first-child { border-top: 0; padding-top: 0; }
+  .practice-step > p { min-height: 0; max-width: 300px; margin-top: 10px; }
+  .practice-step > img { width: min(100%, 240px); height: 145px; margin-top: 14px; object-position: left bottom; }
+
+  .reviews-grid { display: flex; height: auto; min-height: 0; gap: 14px; overflow-x: auto; padding: 0 0 10px; scroll-padding-inline: 0; scroll-snap-type: x mandatory; scrollbar-width: none; transform: none; }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card { flex: 0 0 88vw; height: auto; min-height: 287px; scroll-snap-align: start; }
+  .reviews-grid::after { display: none; }
+  .review-dots { display: flex; align-items: center; justify-content: center; gap: 9px; margin-top: 2px; }
+  .review-dots button { width: 9px; height: 9px; padding: 0; border: 1px solid var(--amaranth); border-radius: 50%; background: transparent; cursor: pointer; transition: background-color var(--motion-base) var(--ease-ui), transform var(--motion-base) var(--ease-editorial); }
+  .review-dots button.is-active { background: var(--amaranth); transform: scale(1.08); }
+
+  .faq-card { overflow: hidden; }
+  .faq-card h3 { margin: 0; }
+  .faq-trigger { position: relative; display: block; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; text-align: left; }
+  .faq-question { display: block; max-width: calc(100% - 24px); margin-top: 10px; padding: 0; color: var(--amaranth); font-family: var(--display); font-size: 23px; line-height: 1.01; }
+  .faq-toggle { position: absolute; top: 4px; right: 0; display: grid; width: 28px; height: 28px; place-items: center; padding: 0; color: var(--amaranth); font-family: var(--sans); font-size: 21px; line-height: 1; transition: transform var(--motion-base) var(--ease-editorial); }
+  .faq-card.is-open .faq-toggle { transform: scaleX(1.05); }
+  .faq-answer { display: grid; grid-template-rows: 1fr; margin-top: 10px; opacity: 1; transition: grid-template-rows 240ms var(--ease-editorial), margin-top 240ms var(--ease-editorial), opacity 180ms var(--ease-ui); }
+  .faq-answer-inner { min-height: 0; overflow: hidden; }
+  .faq-card:not(.is-open) .faq-answer { grid-template-rows: 0fr; margin-top: 0; opacity: 0; }
+
+  .mobile-sticky-cta { position: fixed; z-index: 30; right: 0; bottom: 0; left: 0; display: flex; min-height: 70px; align-items: center; justify-content: space-between; gap: 10px; padding: 9px max(16px, env(safe-area-inset-left)) calc(9px + env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-right)); border-top: 1px solid rgba(75, 53, 46, 0.14); background: rgba(251, 249, 247, 0.96); box-shadow: 0 -8px 24px rgba(59, 39, 34, 0.08); opacity: 0; visibility: hidden; transform: translateY(110%); transition: opacity var(--motion-base) var(--ease-ui), transform var(--motion-base) var(--ease-editorial), visibility 0ms linear var(--motion-base); }
+  .mobile-sticky-cta.is-visible { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0ms; }
+  .mobile-sticky-cta > span { flex: 0 1 auto; color: var(--muted); font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; line-height: 1.25; text-transform: uppercase; }
+  .mobile-sticky-cta > span strong { display: block; color: var(--amaranth); font-family: var(--display); font-size: 15px; letter-spacing: 0; text-transform: none; }
+  .mobile-sticky-cta .button { min-width: 0; min-height: 50px; flex: 1 1 auto; gap: 8px; padding: 10px 13px; font-size: 12px; white-space: nowrap; }
+  body.has-mobile-sticky { padding-bottom: 78px; }
+}
+
+@media (max-width: 380px) {
+  .mobile-sticky-cta > span { display: none; }
+}
+
+@media (min-width: 768px) {
+  .mobile-sticky-cta { display: none !important; }
+  .review-dots { display: none; }
+}
+
+@media (max-width: 900px) and (min-width: 768px) {
+  .method-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 43px 26px; }
+  .method-step--3 { grid-column: 1 / -1; width: min(100%, 300px); justify-self: center; }
+  .practice-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 0; }
+  .practice-step:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .practice-step > p { min-height: 92px; }
+}
+
+@media (max-width: 1180px) and (min-width: 901px) {
+  .syllabus-grid { grid-template-columns: 1fr; height: auto; gap: 46px; }
+  .syllabus-intro { min-height: 0; padding-bottom: 280px; }
+  .syllabus-columns { grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr); width: 100%; gap: 27px; }
+}
+
+.js .practice-content .practice-step { opacity: 0; transform: translate3d(0, 10px, 0); transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.js .practice-content.is-visible .practice-step { opacity: 1; transform: none; }
+.js .practice-content.is-visible .practice-step:nth-child(2) { transition-delay: 70ms; }
+.js .practice-content.is-visible .practice-step:nth-child(3) { transition-delay: 140ms; }
+.js .practice-content.is-visible .practice-step:nth-child(4) { transition-delay: 210ms; }
+.js .practice-content.is-visible .practice-step:nth-child(5) { transition-delay: 280ms; }
+
+.js .syllabus-columns .syllabus-track--nutrition { opacity: 0; transform: translate3d(0, 10px, 0); transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition { opacity: 1; transform: none; transition-delay: 520ms; }
+.js .syllabus-columns.is-visible .syllabus-track--base .module-row:nth-child(2) { transition-delay: 60ms; }
+.js .syllabus-columns.is-visible .syllabus-track--base .module-row:nth-child(3) { transition-delay: 120ms; }
+.js .syllabus-columns.is-visible .syllabus-track--base .module-row:nth-child(4) { transition-delay: 180ms; }
+.js .syllabus-columns.is-visible .syllabus-track--base .module-row:nth-child(5) { transition-delay: 240ms; }
+.js .syllabus-columns.is-visible .syllabus-track--base .module-row:nth-child(6) { transition-delay: 300ms; }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row { opacity: 0; transform: translate3d(0, 8px, 0); }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row:nth-child(1) { opacity: 1; transform: none; transition-delay: 540ms; }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row:nth-child(2) { opacity: 1; transform: none; transition-delay: 600ms; }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row:nth-child(3) { opacity: 1; transform: none; transition-delay: 660ms; }
+.js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row:nth-child(4) { opacity: 1; transform: none; transition-delay: 720ms; }
+
+.problem-copy .argument-band { isolation: isolate; overflow: hidden; background: transparent; }
+.problem-copy .argument-band::before { position: absolute; z-index: -1; inset: 0; background: rgba(255, 247, 246, 0.62); content: ""; transform: scaleX(1); transform-origin: left center; }
+.problem-copy .argument-band > span:first-child { position: absolute; z-index: 1; }
+.problem-copy .argument-band p { position: relative; z-index: 1; }
+.js .problem-copy .argument-band::before { transform: scaleX(0); transition: transform var(--motion-medium) var(--ease-editorial); }
+.js .problem-copy.is-visible .argument-band::before { transform: scaleX(1); transition-delay: 80ms; }
+.js .problem-copy .argument-band p { opacity: 1; transform: none; transition: opacity var(--motion-base) var(--ease-editorial), transform var(--motion-base) var(--ease-editorial); }
+.js .problem-copy:not(.is-visible) .argument-band p { opacity: 0; transform: translate3d(0, 5px, 0); }
+.js .problem-copy.is-visible .argument-band p { transition-delay: 150ms; }
+
+.js .results-side .results-stage img { opacity: 0; transition: opacity var(--motion-medium) var(--ease-editorial); }
+.js .results-side.is-visible .results-stage img { opacity: 1; }
+.js .results-side.is-visible .results-stage img:nth-child(2) { transition-delay: 80ms; }
+.js .results-side.is-visible .results-stage img:nth-child(3) { transition-delay: 160ms; }
+.js .results-side.is-visible .results-stage img:nth-child(4) { transition-delay: 240ms; }
+.js .results-side .results-bust { transform: scale(0.99); transition: opacity var(--motion-medium) var(--ease-editorial), transform var(--motion-medium) var(--ease-editorial); }
+.js .results-side.is-visible .results-bust { transform: scale(1); }
+
+.module-row:focus-within .module-number, .module-row:hover .module-number { background: rgba(140, 21, 53, 0.07); }
+.module-row:focus-within .module-copy h4, .module-row:hover .module-copy h4 { color: var(--amaranth); }
+.module-row .module-art { transition: transform var(--motion-base) var(--ease-editorial); }
+.module-row:focus-within .module-art, .module-row:hover .module-art { transform: scale(1.015); }
+.practice-step:focus-within .practice-step-head h3, .practice-step:hover .practice-step-head h3 { color: var(--amaranth); }
+.practice-step:focus-within .practice-step-head b, .practice-step:hover .practice-step-head b { background: rgba(140, 21, 53, 0.07); }
+.method-step img { transition: transform var(--motion-base) var(--ease-editorial); }
+.method-step:focus .step-label strong, .method-step:hover .step-label strong { color: var(--amaranth); }
+.method-step:focus .method-step img, .method-step:hover .method-step img { transform: scale(1.012); }
+.method-step:focus-visible, .practice-step:focus-visible, .module-row:focus-visible { outline: 1px solid var(--debian); outline-offset: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .problem-copy .argument-band::before { transform: scaleX(1); }
+  .js .practice-content .practice-step, .js .syllabus-columns .syllabus-track--nutrition, .js .syllabus-columns.is-visible .syllabus-track--nutrition .module-row, .js .results-side .results-stage img, .js .results-side .results-bust { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+  .js .reveal:not(.is-visible), .js .hero-copy > *, .js .feature, .js .results-checklist li, .js .scenario, .js .teacher-card, .js .module-row, .js .method-board:not(.is-visible) .method-step { opacity: 1; transform: none; }
+  .js .hero-copy.is-visible > *, .js .hero-collage.is-visible img { animation: none; }
+  .method-board::before { transform: scaleY(1); }
+  .mobile-sticky-cta { transition: none; }
 }

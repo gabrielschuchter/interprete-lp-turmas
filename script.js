@@ -84,7 +84,7 @@ function renderCurriculum(targetId, modules) {
   const target = document.getElementById(targetId);
   if (!target) return;
   target.innerHTML = modules.map((module) => `
-    <article class="module-row">
+    <article class="module-row" tabindex="0">
       <span class="module-number">${escapeHtml(module.month)}</span>
       <div class="module-copy"><h4>${escapeHtml(module.title)}</h4><p>${escapeHtml(module.summary)}</p></div>
       <img class="module-art" src="${assetRoot}/dobra-05-ementa/${escapeHtml(module.image)}" alt="${escapeHtml(module.alt)}" width="200" height="130" loading="lazy" />
@@ -96,7 +96,7 @@ function renderPractice() {
   const target = document.getElementById("practice-steps");
   if (!target) return;
   target.innerHTML = product.practice.map((step, index) => `
-    <article class="practice-step">
+    <article class="practice-step" tabindex="0">
       <div class="practice-step-head"><b>${index + 1}</b><h3>${escapeHtml(step.title)}</h3></div>
       <p>${escapeHtml(step.summary)}</p>
       <img src="${assetRoot}/dobra-06-pratica/${escapeHtml(step.image)}" alt="${escapeHtml(step.alt)}" width="215" height="205" loading="lazy" />
@@ -138,11 +138,19 @@ function renderReviews() {
 function renderFaq() {
   const target = document.getElementById("faq-list");
   if (!target) return;
-  target.innerHTML = product.faq.map((item) => `
-    <details class="faq-card" open>
-      <summary><span class="faq-symbol">${icon(item.icon)}</span><span>${escapeHtml(item.question)}</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
-      <div class="faq-answer"><p>${escapeHtml(item.answer)}</p></div>
-    </details>
+  target.innerHTML = product.faq.map((item, index) => `
+    <article class="faq-card">
+      <h3>
+        <button class="faq-trigger" type="button" aria-expanded="true" aria-controls="faq-answer-${index + 1}">
+          <span class="faq-symbol">${icon(item.icon)}</span>
+          <span class="faq-question">${escapeHtml(item.question)}</span>
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </button>
+      </h3>
+      <div class="faq-answer" id="faq-answer-${index + 1}" role="region" aria-hidden="false">
+        <div class="faq-answer-inner"><p>${escapeHtml(item.answer)}</p></div>
+      </div>
+    </article>
   `).join("");
 }
 
@@ -160,6 +168,12 @@ function applyProductConfiguration() {
 
 function setupReveal() {
   const items = document.querySelectorAll(".reveal");
+  items.forEach((item, index) => item.style.setProperty("--reveal-index", index));
+  document.querySelectorAll(".hero-fold .reveal").forEach((item) => item.classList.add("is-visible"));
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach((item) => item.classList.add("is-visible"));
+    return;
+  }
   if (!("IntersectionObserver" in window)) {
     items.forEach((item) => item.classList.add("is-visible"));
     return;
@@ -170,8 +184,162 @@ function setupReveal() {
       entry.target.classList.add("is-visible");
       currentObserver.unobserve(entry.target);
     });
-  }, { rootMargin: "0px 0px -5% 0px", threshold: 0.02 });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
   items.forEach((item) => observer.observe(item));
+}
+
+function setFaqState(card, open) {
+  const button = card.querySelector(".faq-trigger");
+  const answer = card.querySelector(".faq-answer");
+  const toggle = card.querySelector(".faq-toggle");
+  if (!button || !answer) return;
+  card.classList.toggle("is-open", open);
+  button.setAttribute("aria-expanded", String(open));
+  answer.setAttribute("aria-hidden", String(!open));
+  if (toggle) toggle.textContent = open ? "−" : "+";
+}
+
+function setupFaq() {
+  const cards = [...document.querySelectorAll(".faq-card")];
+  if (!cards.length) return;
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+
+  const syncToViewport = () => {
+    cards.forEach((card, index) => setFaqState(card, !mobileQuery.matches || index === 0));
+  };
+
+  cards.forEach((card) => {
+    const button = card.querySelector(".faq-trigger");
+    if (!button) return;
+    button.addEventListener("click", () => {
+      const willOpen = !card.classList.contains("is-open");
+      if (mobileQuery.matches) {
+        cards.forEach((other) => {
+          if (other !== card) setFaqState(other, false);
+        });
+      }
+      setFaqState(card, willOpen);
+    });
+  });
+
+  syncToViewport();
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", syncToViewport);
+  else mobileQuery.addListener(syncToViewport);
+}
+
+function setupReviewScroller() {
+  const scroller = document.getElementById("reviews-grid");
+  const dots = document.getElementById("review-dots");
+  if (!scroller || !dots) return;
+  const cards = [...scroller.querySelectorAll(".review-card")];
+  if (!cards.length) return;
+
+  dots.innerHTML = cards.map((_, index) => `<button type="button" aria-label="Ir para o depoimento ${index + 1}" aria-pressed="${index === 0}"></button>`).join("");
+  const dotButtons = [...dots.querySelectorAll("button")];
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
+  const setActive = (index) => {
+    dotButtons.forEach((button, buttonIndex) => {
+      const active = buttonIndex === index;
+      button.classList.toggle("is-active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  };
+
+  const getActiveIndex = () => {
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = Number.parseFloat(getComputedStyle(scroller).columnGap || getComputedStyle(scroller).gap) || 0;
+    return Math.max(0, Math.min(cards.length - 1, Math.round(scroller.scrollLeft / Math.max(1, cardWidth + gap))));
+  };
+
+  let frame = 0;
+  const updateFromScroll = () => {
+    frame = 0;
+    setActive(getActiveIndex());
+  };
+  scroller.addEventListener("scroll", () => {
+    if (frame) return;
+    frame = requestAnimationFrame(updateFromScroll);
+  }, { passive: true });
+  dotButtons.forEach((button, index) => button.addEventListener("click", () => {
+    scroller.scrollTo({ left: cards[index].offsetLeft, behavior: reducedMotion ? "auto" : "smooth" });
+    setActive(index);
+  }));
+  window.addEventListener("resize", updateFromScroll, { passive: true });
+  setActive(0);
+}
+
+function setupHeroParallax() {
+  const collage = document.querySelector(".hero-collage");
+  const finePointer = window.matchMedia?.("(hover: hover) and (pointer: fine)");
+  const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)");
+  if (!collage || window.innerWidth < 1024 || !finePointer?.matches || reducedMotion?.matches) return;
+
+  let frame = 0;
+  let x = 0;
+  let y = 0;
+  const paint = () => {
+    frame = 0;
+    collage.style.setProperty("--parallax-x", `${x.toFixed(2)}px`);
+    collage.style.setProperty("--parallax-y", `${y.toFixed(2)}px`);
+  };
+  const move = (event) => {
+    const rect = collage.getBoundingClientRect();
+    x = ((event.clientX - (rect.left + rect.width / 2)) / Math.max(1, rect.width)) * 8;
+    y = ((event.clientY - (rect.top + rect.height / 2)) / Math.max(1, rect.height)) * 8;
+    if (!frame) frame = requestAnimationFrame(paint);
+  };
+  const reset = () => {
+    x = 0;
+    y = 0;
+    if (!frame) frame = requestAnimationFrame(paint);
+  };
+  collage.addEventListener("pointermove", move, { passive: true });
+  collage.addEventListener("pointerleave", reset, { passive: true });
+}
+
+function setupMobileStickyCta() {
+  const sticky = document.getElementById("mobile-sticky-cta");
+  const hero = document.querySelector(".hero-fold");
+  const offer = document.querySelector(".offer-fold");
+  const faq = document.querySelector(".faq-fold");
+  const closing = document.querySelector(".closing-fold");
+  if (!sticky || !hero || !offer || !faq || !closing) return;
+  const mobileQuery = window.matchMedia("(max-width: 767px)");
+  const link = sticky.querySelector("a");
+  let offerVisible = false;
+  let faqVisible = false;
+  let closingVisible = false;
+
+  const setVisible = (visible) => {
+    sticky.classList.toggle("is-visible", visible);
+    sticky.setAttribute("aria-hidden", String(!visible));
+    sticky.inert = !visible;
+    if (link) link.tabIndex = visible ? 0 : -1;
+    document.body.classList.toggle("has-mobile-sticky", visible);
+  };
+  const sync = () => {
+    const threshold = hero.offsetTop + hero.offsetHeight * 0.7;
+    const visible = mobileQuery.matches && window.scrollY >= threshold && !offerVisible && !faqVisible && !closingVisible;
+    setVisible(visible);
+  };
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.target === offer) offerVisible = entry.isIntersecting;
+        if (entry.target === faq) faqVisible = entry.isIntersecting;
+        if (entry.target === closing) closingVisible = entry.isIntersecting;
+      });
+      sync();
+    }, { threshold: 0.22 });
+    [offer, faq, closing].forEach((section) => observer.observe(section));
+  }
+  window.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", sync, { passive: true });
+  if (mobileQuery.addEventListener) mobileQuery.addEventListener("change", sync);
+  else mobileQuery.addListener(sync);
+  setVisible(false);
 }
 
 renderCurriculum("curriculum-base", product.curriculum.base);
@@ -183,3 +351,7 @@ renderReviews();
 renderFaq();
 applyProductConfiguration();
 setupReveal();
+setupFaq();
+setupReviewScroller();
+setupHeroParallax();
+setupMobileStickyCta();
